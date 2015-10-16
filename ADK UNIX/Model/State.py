@@ -1,10 +1,10 @@
-from wx.lib.pubsub import Publisher as pub
+from wx.lib.pubsub import pub
 
 
 class State:
 
     def __init__(self):
-        pub.sendMessage("STATE CHANGED", {"state": self.__class__.__name__})
+        pub.sendMessage("STATE CHANGED", message={"state": self.__class__.__name__})
 
     def __str__(self):
         return self.__class__.__name__

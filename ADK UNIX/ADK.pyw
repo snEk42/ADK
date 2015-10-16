@@ -1,5 +1,5 @@
 import wx
-from wx.lib.pubsub import Publisher as pub
+from wx.lib.pubsub import pub
 
 from Model.Game import Game
 from View.View  import View
@@ -83,22 +83,22 @@ class Controller:
 
 
     def OnStateChange(self, message):
-        state = message.data['state']
+        state = message['state']
         if state == "WelcomeScreen":
             self.view.DisplayWelcomeScreen()
         elif state == "ControlChoosing":
             self.view.DisplayControlChoosing()
         elif state == "GameRound":
-            scores = message.data['scores']
+            scores = message['scores']
             self.view.DisplayGameRound(scores)
         elif state == "FinalScoreBoard":
-            scores = message.data['scores']
+            scores = message['scores']
             self.view.DisplayFinalScoreBoard(scores)
 
 
     def OnReadyChange(self, message):
-        color = message.data['color']
-        ready = message.data['ready']
+        color = message['color']
+        ready = message['ready']
         self.view.DisplayReadyStatement(color, ready)
 
 
@@ -107,8 +107,8 @@ class Controller:
 
 
     def OnPlayAreaChange(self, message):
-        color = message.data['color']
-        points = message.data['points']
+        color = message['color']
+        points = message['points']
         self.view.DisplayPoints(color, points)
 
 

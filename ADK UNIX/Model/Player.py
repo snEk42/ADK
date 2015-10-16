@@ -1,4 +1,4 @@
-from wx.lib.pubsub import Publisher as pub
+from wx.lib.pubsub import pub
 
 from Direction import Left, Right, Straight
 

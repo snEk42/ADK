@@ -1,5 +1,5 @@
 import random
-from wx.lib.pubsub import Publisher as pub
+from wx.lib.pubsub import pub
 
 from Point import Point
 from Exceptions import CrashException

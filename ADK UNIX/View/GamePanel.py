@@ -16,7 +16,7 @@ class GamePanel(wx.Panel):
     def ShowWelcomeImage(self):
         self.ClearPanel()
         dc = wx.ClientDC(self.panel)
-        welcomeImage = wx.Bitmap("View\\Achtung.jpg")
+        welcomeImage = wx.Bitmap("View/Achtung.jpg")
         (x, y) = self.panel.GetSize()
         (ix, iy) = welcomeImage.GetSize()
         dc.DrawBitmap(welcomeImage, (x-ix)/2, (y-iy)/2, True)
@@ -34,7 +34,7 @@ class GamePanel(wx.Panel):
         playerColors.remove('black')
         for color in playerColors:
             (x, y) = self.GetReadyCoordinates(color)
-            controlOption = wx.Bitmap("View\\Controls\\%s.gif" % (color.title()))
+            controlOption = wx.Bitmap("View/Controls/%s.gif" % (color.title()))
             controlOptionWidth = controlOption.GetWidth()
             dc.DrawBitmap(controlOption, x-controlOptionWidth, y, True)
 
@@ -50,9 +50,9 @@ class GamePanel(wx.Panel):
         dc = wx.ClientDC(self.panel)
         (x, y) = self.GetReadyCoordinates(color)
         if ready == True:
-            ready = wx.Bitmap("View\\Readys\\%s.gif" % (color.title()))
+            ready = wx.Bitmap("View/Readys/%s.gif" % (color.title()))
         else:
-            ready = wx.Bitmap("View\\Readys\\Blank.gif")
+            ready = wx.Bitmap("View/Readys/Blank.gif")
         dc.DrawBitmap(ready, x, y, True)
         self.AddEventHandlersOnNewElements()
 
@@ -82,11 +82,11 @@ class GamePanel(wx.Panel):
         for color in scores:
             (x, y) = self.GetScoreCoordinates(color)
             if scores[color] < 10:
-                score = wx.Bitmap("View\\Scores\\%s\\%i.gif" % (color, scores[color]))
+                score = wx.Bitmap("View/Scores/%s/%i.gif" % (color, scores[color]))
                 dc.DrawBitmap(score, x, y, True)
             else:
-                score10 = wx.Bitmap("View\\Scores\\%s\\%i.gif" % (color, scores[color]/10))
-                score1 = wx.Bitmap("View\\Scores\\%s\\%i.gif" % (color, scores[color]%10))
+                score10 = wx.Bitmap("View/Scores/%s/%i.gif" % (color, scores[color]/10))
+                score1 = wx.Bitmap("View/Scores/%s/%i.gif" % (color, scores[color]%10))
                 scoreWidth = score10.GetWidth()
                 dc.DrawBitmap(score10, x, y, True)
                 dc.DrawBitmap(score1, x+scoreWidth+1, y, True)
@@ -97,11 +97,11 @@ class GamePanel(wx.Panel):
         for color in scores:
             (x, y) = self.GetFinalScoreCoordinates(color)
             if scores[color] < 10:
-                score = wx.Bitmap("View\\FinalScores\\%s\\%i.gif" % (color, scores[color]))
+                score = wx.Bitmap("View/FinalScores/%s/%i.gif" % (color, scores[color]))
                 dc.DrawBitmap(score, x, y, True)
             else:
-                score10 = wx.Bitmap("View\\FinalScores\\%s\\%i.gif" % (color, scores[color] / 10))
-                score1 = wx.Bitmap("View\\FinalScores\\%s\\%i.gif" % (color, scores[color] % 10))
+                score10 = wx.Bitmap("View/FinalScores/%s/%i.gif" % (color, scores[color] / 10))
+                score1 = wx.Bitmap("View/FinalScores/%s/%i.gif" % (color, scores[color] % 10))
                 scoreWidth = score10.GetWidth()
                 dc.DrawBitmap(score10, x, y, True)
                 dc.DrawBitmap(score1, x + scoreWidth + 4, y, True)
@@ -109,7 +109,7 @@ class GamePanel(wx.Panel):
 
     def ShowEndOfGame(self):
         dc = wx.ClientDC(self.panel)
-        welcomeImage = wx.Bitmap("View\\End.gif")
+        welcomeImage = wx.Bitmap("View/End.gif")
         (x, y) = self.panel.GetSize()
         (ix, iy) = welcomeImage.GetSize()
         dc.DrawBitmap(welcomeImage, (x - ix) / 2, (y - iy - 50), True)
@@ -171,7 +171,7 @@ class GamePanel(wx.Panel):
 
     def DisplayRoundBackground(self):
         dc = wx.ClientDC(self.panel)
-        background = wx.Bitmap('View\\Scores\\Background.gif')
+        background = wx.Bitmap('View/Scores/Background.gif')
         (iw, ih) = background.GetSize()
         (x, y) = self.panel.GetSize()
         for i in range(0, y, ih):
