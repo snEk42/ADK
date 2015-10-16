@@ -31,7 +31,7 @@ Ale zpátky ke stavům hry. Druhý stav, ControlChoosing, reprezentuje fázi hry
 
 TŘÍDA GAMEROUND  Třídy WelcomeScreen, ControlChoosing a FinalScoreBoard jsou poměrně přímočaré, pojďme si ale blíže představit třídu GameRound. GameRound ke svému fungování potřebuje dvě základní datové struktury. Jsou to pole hráčů a dvourozměrné pole reprezentující pixely na obrazovce, na kterém se hraje.
 Pole hráčů GameRound získá od předchozího stavu (ControlChoosing) a instanci třídy PlayArea, která obaluje dvourozměrné herní pole a zjednodušuje práci s ním, od třídy Game, která ho získala při inicializaci celé hry od Controlleru.
-Když kolo začne je nastaven Timer, který každých 20 ms spustí hlavní cyklus kola, vekterém každému hráči řekne, aby se o kousek posunul, a započítá hráčům případné body za narazivší protihráče.
+Když kolo začne je nastaven Timer, který každých 20 ms spustí hlavní cyklus kola, ve kterém každému hráči řekne, aby se o kousek posunul, a započítá hráčům případné body za narazivší protihráče.
 
 
 
