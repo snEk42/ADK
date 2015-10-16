@@ -1,0 +1,41 @@
+---------------------------------
+ PROGRAMOVÁ DOKUMENTACE HRY ADK
+---------------------------------
+PŘEDMĚT: Programování I (NPRG030)
+DATUM:   28. 7. 2013
+AUTOR:   Jiří Erhart
+---------------------------------
+
+ZÁKLADNÍ INFORMACE O APLIKACI
+
+Aplikace je napsána objektově v jazyce Python verze 2.7 s použitím grafické knihovny WxPython verze 2.8 a respektuje MVC architekturu.
+
+
+
+ROZVRŽENÍ APLIKACE
+
+TŘÍDA CONTROLLER  Vstupním bodem aplikace je třída Controller v souboru ADK.pyw, tímto souborem se také spouští celá aplikace. Controller zodpovídá za inicializaci view a modelu, nastavení signálů a odchytávání uživatelského vstupu z klávesnice a myši. Controller také tlumočí uživatelský vstup modelu. Zmíněné signály vysílá model v případě, že se změnil jeho vnitřní stav, a reaguje na ně view, které tyto změny následně zobrazuje uživateli na obrazovku. Signály jsou v aplikaci realizovány pomocí třídy Publisher obsažené v grafické knihovně.
+
+TŘÍDA VIEW  Další důležitou součástí programu je třída View. Jejím úkolem je inicializovat třídu GamePanel, která potom zastupuje velký černý panel přes celou obrazovku a ve které je popsáno veškeré vykreslování. Dále View předává všechny zaregistrované změny v modelu právě instanci třídy GamePanel k vykreslení.
+
+TŘÍDA GAMEPANEL  GamePanel obsluhuje veškeré vykreslování na obrazovku. Používá k tomu několik pomocných metod hlavně na vypočítání rozmístění jednotlivých prvků po obrazovce. Program přejímá veškerou grafiku vzorové dosové hry "Achtung, die Kurve!" a tak pokud nejde o vykreslování samotných červů, GamePanel pouze zobrazuje obrázky získané ze zvětšených printscreenů původní hry. 
+GamePanel má ještě jednu specialitu. Protože jeden hráč ve hře je ovládaný myší, musí být někde odchytávány kliknutí myší na obrazovku. Děje se tomu tak právě v GamePanelu, protože zprávu o kliknutí obdrží díky grafické knihovně právě prvek, na který bylo kliknuto. GamePanel potom kliknutí myši pomocí metody grafické knihovny PostEvent() propaguje Controlleru.
+
+TŘÍDA GAME  Třída Game zastřešuje celý model, ačkoliv sama téměř nic nedělá. V aplikaci je právě proto, aby model byl jednotný pro celou hru a mohl tak být jednodušší Controller. Smyslem instance Game je udržování aktuálního stavu hry a tlumočení událostí z klávesnice nebo myši tomuto stavu od Controlleru.
+
+TŘÍDA STATE  Třída State je abstraktní definicí rozhraní každého stavu hry. Stavy hry jsou čtyři a každý od třídy State dědí. State obsahuje také definice několika metod společných pro všechny stavy. Jsou to metody na porovnávání stavů, na vrácení textové reprezentace stavu a základní inicializaci stavu (Vždy, když se změní stav, musí se změnit i údaje na obrazovce a tak základní konstruktor třídy State obsahuje signál pro View o změně stavu.).
+
+POTOMCI TŘÍDY STATE (WelcomeScreen, ControlChoosing, GameRound, FinalScoreBoard)Tyto čtyři třídy reprezentují každá jeden ze stavů hry (nebo lépe jednu z fází hry). Pozorný čtenář už asi tuší, které to budou. Prvním stavem hry je zobrazení úvodní obrazovky.
+Jakkoliv je tento stav primitivní musí ho být aplikace schopna postihnout. Stavy rozlišujeme hlavně proto, že v každém z těchto okamžiků hry reaguje program na stisknutí stejných tlačítek na klávesnici různě. Proto je i veškerá obsluha událostí z klávesnice a myši situována právě do každého stavu zvlášť a stavy musí být odděleny.
+Ale zpátky ke stavům hry. Druhý stav, ControlChoosing, reprezentuje fázi hry, ve které probíhá vybírání hadů, kteří budou hrát. Třetí stav potom obsluhuje události během celého jednoho kola hry. Hra ale probíhá v několika kolech a tak je pro každé kolo vytvářena nová instance stavu GameRound. A posledním stavem je FinalScoreBoard, ve kterém už dochází jen ke zobrazení závěrečné tabulky s výsledky.
+
+TŘÍDA GAMEROUND  Třídy WelcomeScreen, ControlChoosing a FinalScoreBoard jsou poměrně přímočaré, pojďme si ale blíže představit třídu GameRound. GameRound ke svému fungování potřebuje dvě základní datové struktury. Jsou to pole hráčů a dvourozměrné pole reprezentující pixely na obrazovce, na kterém se hraje.
+Pole hráčů GameRound získá od předchozího stavu (ControlChoosing) a instanci třídy PlayArea, která obaluje dvourozměrné herní pole a zjednodušuje práci s ním, od třídy Game, která ho získala při inicializaci celé hry od Controlleru.
+Když kolo začne je nastaven Timer, který každých 20 ms spustí hlavní cyklus kola, vekterém každému hráči řekne, aby se o kousek posunul, a započítá hráčům případné body za narazivší protihráče.
+
+
+
+
+
+
+

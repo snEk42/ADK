@@ -1,0 +1,43 @@
+---------------------------------
+ UŽIVATELSKÁ DOKUMENTACE HRY ADK
+---------------------------------
+PŘEDMĚT: Programování I (NPRG030)
+DATUM:   18. 6. 2013
+AUTOR:   Jiří Erhart
+---------------------------------
+
+O ADK
+
+ADK je klonem staré DOSové hry "Achtung, Die Kurve!", jehož cílem je věrně kopírovat originál. Hra je určena pro 2 - 6 hráčů na jedné klávesnici a myši a v kolektivu 4 - 6 hráčů je vysoce návyková.
+
+
+
+PRINCIP HRY
+
+Hra probíhá v jednotlivých kolech. Každé kolo začínají všichni hráči s náhodně rozmístěnými začátky svých "hadů" na herní ploše. Jejich "hadi" potom během celého kola postupně narůstají.
+Každý hráč má možnost zatáčet a měnit tak směr růstu svého hada. Cílem kola je co nejdéle nenarazit svým hadem do okrajů herní plochy ani do žádného jiného hada, včetně sebe. Za každého hráče, který v rámci kola narazí dříve než Vy, získáváte bod. Cílem celé hry je jako první dosáhnout určitého počtu bodů v závislosti na počtu hráčů.
+Pro zpestření hry se náhodně ve všech hadech objevují krátké mezery, jimiž také možné projet hadem a zachránit se ze zdánlivě bezvýchodné situace.
+
+
+
+JAK HRU SPUSTIT
+
+ADK je napsáno v programovacím jazyce Python verze 2.7 s grafickou knihovnou WxPython verze 2.8. To s sebou přináší dvě věci. Tou pozitivní je, že zdrojový kód hry lze spustit jak ve Windows, tak pod Linuxem (zatím nevyzkoušeno). Tou negativní naopak, že hra ke svému spuštění vyžaduje, aby na Vašem počítači byl nainstalovaný Python i WxPython ve zmíněných nebo vyšších verzích. Jakmile máte nainstalováno hru spustíte dvojklikem na soubor ADK.pyw v kořenové složce hry.
+
+JAK NAINSTALOVAT PYTHON (Windows XP a novější)
+Na oficiální stránce Pythonu v sekci download (http://www.python.org/download/) najdete ke stažení "Python 2.7.x Windows installer", kde x je nějaké číslo subverze. Tento soubor je potřeba stáhnout do počítače a spustit. Čeká na Vás standartní instalační diaolog, ve kterém stačí nechat defaultní nastavení a proklikat se skrze instalaci. Tím máte hotovo.
+
+JAK NAINSTALOVAT WXPYTHON (Windows XP a novější)
+Před instalací WxPythonu musíte mít nainstalovaný Python ve verzi 2.7 a vědět bitovost této instalace. Tu najdete napsanou na prvním řádku v konzoli Pythonu v hranaté závorce ("32 bit" nebo "64 bit"). Konzoli Pythonu můžete spustit jako program z nabídky programů v systému pod názvem "Python (command line)".
+Samotná instalace je poté opět jednoduchá. Na oficiální stránce WxPythonu v sekci pro download stabilní verze (http://www.wxpython.org/download.php#stable) najdete v části Windows Binaries ke stažení instalační program WxPythonu pro 32-bit nebo 64-bit Python 2.7. Je možné, že budete mít na výběr mezi unicode a ansi verzí. Stáhněte prosím tu unicodovou.
+Stažený instalační soubor už stačí jen spustit a proklikat se instalací s defaulními nastaveními.
+
+
+
+OVLÁDÁNÍ HRY
+
+Hra se ovládá z klávesnice. Pro přechod mezi jednotlivými fázemi hry slouží mezerník. Fáze hry jsou čtyři, první je úvodní obrazovka s nápisem "Achtung, die Kurve!", druhá je obrazovka s výběrem ovládání, třetí fázi tvoří jednotlivá kola hry a poslední fází je zobrazení výsledného skóre. Mezerník slouží taká pro zahájení dalšího kola poté, co to aktuálí skončilo.
+Hru můžete kdykoliv ukončit stisknutím klávesy escape. První stisknutí Vás vrátí na začátek hry, druhé potom hru definitivně ukončí.
+Poslední a nejdůležitější částí ovládání jsou dvě klávesy pro každého hráče na zatáčení "hadem" vlevo a vpravo. Ty nelze volit libovolně. Každá barva má pevně určené dvě klávesy. Červený had se ovládá dvojicí kláves (1 Q), oranžový (M ,), atp. První klávesa zatáčí "hadem" doleva, druhá doprava. Na orazovce s výběrem ovládání jsou tyto kombinace vypsány vždy barvou hada, ke kterému přísluší.
+Hada v této fázi přihlásíte do hry stiskem první z nich, odhlásit ho lze stiskem druhé klávesy. Následně budou hrát jen přihlášení "hadi", ti jsou také označeni slovem READY.
+Nakonec modrý had tvoří malou výjimku. Ovládá se levým a pravým tlačítkem myši, aby se přímo u klávesnice netěsnalo tolik lidí.
