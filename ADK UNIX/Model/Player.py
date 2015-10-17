@@ -20,7 +20,7 @@ class Player:
     def SetPlaying(self, value):
         if self.isPlaying != value:
             self.isPlaying = value
-            pub.sendMessage("READY CHANGED", {'color': self.color, 'ready': self.isPlaying})
+            pub.sendMessage("READY CHANGED", message={'color': self.color, 'ready': self.isPlaying})
 
 
     def IncrementScore(self):

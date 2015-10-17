@@ -102,8 +102,8 @@ class Controller:
         self.view.DisplayReadyStatement(color, ready)
 
 
-    def OnScoreChange(self, message):
-        self.view.DisplayNewScores(message.data)
+    def OnScoreChange(self, scores):
+        self.view.DisplayNewScores(scores)
 
 
     def OnPlayAreaChange(self, message):

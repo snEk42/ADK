@@ -27,13 +27,13 @@ class PlayArea:
                 self.grid[point.y][point.x] = self.colorHashes[color]
             else:
                 raise CrashException('Crash with other color')
-        pub.sendMessage("PLAYAREA CHANGED", {'color': color, 'points': points})
+        pub.sendMessage("PLAYAREA CHANGED", message={'color': color, 'points': points})
 
 
     def ColorPointsForced(self, color, points):
         for point in points:
             self.grid[point.y][point.x] = self.colorHashes[color]
-        pub.sendMessage("PLAYAREA CHANGED", {'color': color, 'points': points})
+        pub.sendMessage("PLAYAREA CHANGED", message={'color': color, 'points': points})
 
 
     def GetRandomPosition(self):

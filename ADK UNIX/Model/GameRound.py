@@ -1,4 +1,4 @@
-from wx.lib.pubsub import Publisher as pub
+from wx.lib.pubsub import pub
 import random
 
 from State import State
@@ -16,7 +16,7 @@ class GameRound(State):
         self.playersAlive = self.PlayersPlaying()
         self.GenerateLineHeadsForPlayers()
         self.progress = "roundInAction"
-        pub.sendMessage("STATE CHANGED", {'state': self.__class__.__name__, 'scores': self.GetScores()})
+        pub.sendMessage("STATE CHANGED", message={'state': self.__class__.__name__, 'scores': self.GetScores()})
 
 
     def StartGameRound(self, timer):
@@ -99,7 +99,7 @@ class GameRound(State):
                 color = player.color
                 score = player.score
                 scores[color] = score
-        pub.sendMessage("SCORE CHANGED", scores)
+        pub.sendMessage("SCORE CHANGED", scores=scores)
 
 
     def GetScores(self):
