@@ -22,7 +22,7 @@ Pro zpestření hry se náhodně ve všech hadech objevují krátké mezery, jim
 
 JAK HRU SPUSTIT
 
-ADK je napsáno v programovacím jazyce Python verze 2.7 s grafickou knihovnou WxPython verze 2.8. To s sebou přináší dvě věci. Tou pozitivní je, že zdrojový kód hry lze spustit jak ve Windows, tak pod Linuxem (zatím nevyzkoušeno). Tou negativní naopak, že hra ke svému spuštění vyžaduje, aby na Vašem počítači byl nainstalovaný Python i WxPython ve zmíněných nebo vyšších verzích. Jakmile máte nainstalováno hru spustíte dvojklikem na soubor ADK.pyw v kořenové složce hry.
+ADK je napsáno v programovacím jazyce Python verze 2.7 s grafickou knihovnou WxPython verze 2.8.12. To s sebou přináší dvě věci. Tou pozitivní je, že zdrojový kód hry lze spustit jak ve Windows, tak pod Linuxem (zatím nevyzkoušeno). Tou negativní naopak, že hra ke svému spuštění vyžaduje, aby na Vašem počítači byl nainstalovaný Python i WxPython ve zmíněných nebo vyšších verzích. Jakmile máte nainstalováno hru spustíte dvojklikem na soubor ADK.pyw v kořenové složce hry.
 
 JAK NAINSTALOVAT PYTHON (Windows XP a novější)
 Na oficiální stránce Pythonu v sekci download (http://www.python.org/download/) najdete ke stažení "Python 2.7.x Windows installer", kde x je nějaké číslo subverze. Tento soubor je potřeba stáhnout do počítače a spustit. Čeká na Vás standartní instalační diaolog, ve kterém stačí nechat defaultní nastavení a proklikat se skrze instalaci. Tím máte hotovo.

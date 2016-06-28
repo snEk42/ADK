@@ -1,0 +1,30 @@
+---------------------------------
+ KOMENTÁŘ K IMPLEMENTACI HRY ADK
+---------------------------------
+PŘEDMĚT: Návrhové vzory (NPRG024)
+DATUM:   28. 6. 2016
+AUTOR:   Jiří Erhart
+---------------------------------
+
+ÚVOD
+V tomto textu bych se chtěl zaměřit na implementaci návrhového vzoru state v modelu aplikace. Základní členění celé aplikace je možné najít v programové dokumentaci.
+Uvědomuji si, že Python není pro demonstraci implementace návrhového vzoru ideálním jazykem. Chybějící vlastnosti jazyka (jako absenci private/public modifikátorů metod) lze ale nahradit konvencí, pro potřeby této práce zdůrazněné v komentářích. 
+
+
+MOTIVACE
+Hra "Achtung, die Kurve!" má čtyři fáze/obrazovky, ve kterých odlišně reaguje na uživatelský vstup z klávesnice a myši. Těmito fázemi jsou úvodní obrazovka, výběr ovládání, samotná hra a přehled výsledků. Různé chování aplikace v závislosti na fázi hry lze dobře postihnout právě návrhovým vzorem state.
+
+
+ŘEŠENÍ
+ABSTRACT STATE
+Základní implementaci rozhraní všech stavů obsahuje třída Model.State. Najdeme v ní 4 hlavní metody:
+  def NextState(self, game) - Přijímá referenci na kontext a v případě splnění podmínky pro přechod do dalšího stavu nastaví kontextu stav nový.
+  def KeyPressed(self, key) - Obslouží událost stisku klávesy na základě aktuálního stavu.
+  def KeyReleased(self, key) - Obslouží událost uvolnění klávesy na základě aktuálního stavu.
+  def OnTimer(self) - Obslouží tik hodin, tato metoda je explicitně definovaná jen ve fázi hry. Implicitní definice nic neprovede.
+  
+CONCRETE STATE
+Konkrétní stavy dědí od Model.State a nabízí konkrétní implementaci jeho rozhraní v závislosti na fázi hry. Konkrétní stavy jsou čtyři (Model.WelcomeScreen, Model.ControlChoosing, Model.GameRound a Model.FinalScoreBoard) a nejlepší představu o nich čtenář získá nahlédnutím do zdrojového kódu.
+
+CONTEXT
+Context tvoří třída Model.Game. Jsou do ní vyhrazené reference na herní plochu (playArea) a časovač (timer), které nepotřebují všechny stavy. Změny stavu v kontextu je docíleno pomocí metody NextState(). Metodu NextState() volá hlavní controller aplikace na Model.Game v případě stisknutí mezerníku. Model.Game potom volá metodu NextState(game) na aktuálním stavu. Ten rozhodne jestli a k jaké změně stavu má dojít a podle toho nastaví na Model.Game předané v parametru metody NextState(game) stav nový.
